@@ -777,7 +777,7 @@ h3 {
 }
 
 .vexis-case-study {
-  overflow: hidden;
+  overflow: visible;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   background:
     radial-gradient(circle at 18% 6%, rgba(123, 199, 196, 0.12), transparent 28rem),
@@ -1367,10 +1367,18 @@ h3 {
 
 .vexis-gallery,
 .milestone-gallery,
-.evolution-timeline {
+.evolution-timeline,
+.product-evolution-grid {
   display: grid;
   align-items: start;
   gap: clamp(18px, 3vw, 30px);
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.milestone-gallery {
+  overflow: visible;
 }
 
 .started-gallery {
@@ -1385,6 +1393,10 @@ h3 {
 .evolution-card {
   display: grid;
   grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
   gap: clamp(24px, 4vw, 48px);
   align-items: start;
   padding: clamp(22px, 4vw, 38px);
@@ -1398,6 +1410,8 @@ h3 {
 }
 
 .evolution-copy {
+  min-width: 0;
+  max-width: 100%;
   position: sticky;
   top: 110px;
 }
@@ -1421,6 +1435,7 @@ h3 {
 }
 
 .milestone-gallery.single-feature {
+  width: min(100%, 390px);
   max-width: 390px;
 }
 
@@ -1509,17 +1524,24 @@ body.lightbox-open {
   }
 
   .started-gallery,
+  .evolution-timeline,
+  .product-evolution-grid,
   .evolution-card,
+  .milestone-gallery,
   .milestone-gallery.two-up,
   .milestone-gallery.three-up,
+  .milestone-gallery.single-feature,
   .signai-gallery {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
   }
 
   .started-gallery,
   .milestone-gallery,
   .signai-gallery {
-    justify-items: center;
+    justify-items: stretch;
   }
 
   .started-gallery,
@@ -1536,6 +1558,16 @@ body.lightbox-open {
     align-items: start;
   }
 
+  .evolution-card,
+  .evolution-copy,
+  .milestone-gallery,
+  .milestone-gallery > *,
+  .screenshot-trigger {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
   .evolution-copy {
     position: static;
   }
@@ -1543,11 +1575,13 @@ body.lightbox-open {
   .vexis-gallery .vexis-screenshot-frame,
   .milestone-gallery .vexis-screenshot-frame {
     width: min(100%, 340px);
+    max-width: 100%;
+    justify-self: center;
   }
 
   .milestone-gallery.single-feature {
-    max-width: none;
-    justify-items: center;
+    max-width: 100%;
+    justify-items: stretch;
   }
 
   .hero-screenshot-frame {
@@ -1563,6 +1597,7 @@ body.lightbox-open {
   .vexis-gallery .vexis-screenshot-frame,
   .milestone-gallery .vexis-screenshot-frame {
     width: min(100%, 310px);
+    max-width: 100%;
   }
 
   .vexis-screenshot-frame,
@@ -1574,6 +1609,9 @@ body.lightbox-open {
 
   .vexis-screenshot-frame img,
   .screenshot-trigger {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
     border-radius: 14px;
   }
 
