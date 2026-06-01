@@ -1524,24 +1524,12 @@ body.lightbox-open {
   }
 
   .started-gallery,
-  .evolution-timeline,
-  .product-evolution-grid,
-  .evolution-card,
-  .milestone-gallery,
-  .milestone-gallery.two-up,
-  .milestone-gallery.three-up,
-  .milestone-gallery.single-feature,
   .signai-gallery {
     grid-template-columns: minmax(0, 1fr);
+    justify-items: stretch;
     width: 100%;
     max-width: 100%;
     overflow: visible;
-  }
-
-  .started-gallery,
-  .milestone-gallery,
-  .signai-gallery {
-    justify-items: stretch;
   }
 
   .started-gallery,
@@ -1549,13 +1537,72 @@ body.lightbox-open {
     margin-top: 24px;
   }
 
-  .evolution-timeline {
-    gap: 24px;
+  .evolution-timeline.product-evolution-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    gap: 32px;
+    overflow: visible;
   }
 
   .evolution-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+    gap: 24px;
+    padding: clamp(20px, 5vw, 30px);
+    overflow: visible;
+    border-radius: 26px;
+    background:
+      radial-gradient(circle at 12% 0%, rgba(123, 199, 196, 0.12), transparent 16rem),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+  }
+
+  .evolution-copy {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    gap: 10px;
+  }
+
+  .evolution-copy span {
+    margin-bottom: 2px;
+    font-size: 0.84rem;
+    letter-spacing: 0.18em;
+  }
+
+  .evolution-copy h3 {
+    margin-bottom: 0;
+    font-size: clamp(1.42rem, 6vw, 2rem);
+    line-height: 1.08;
+  }
+
+  .evolution-copy p {
+    max-width: 62ch;
+    margin-bottom: 0;
+    font-size: clamp(0.98rem, 3.8vw, 1.08rem);
+  }
+
+  .milestone-gallery,
+  .milestone-gallery.two-up,
+  .milestone-gallery.three-up,
+  .milestone-gallery.single-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
     gap: 22px;
-    align-items: start;
+    overflow: visible;
   }
 
   .evolution-card,
@@ -1564,24 +1611,27 @@ body.lightbox-open {
   .milestone-gallery > *,
   .screenshot-trigger {
     min-width: 0;
-    width: 100%;
     max-width: 100%;
-  }
-
-  .evolution-copy {
-    position: static;
   }
 
   .vexis-gallery .vexis-screenshot-frame,
   .milestone-gallery .vexis-screenshot-frame {
-    width: min(100%, 340px);
-    max-width: 100%;
-    justify-self: center;
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    margin-inline: auto;
+  }
+
+  .milestone-gallery .vexis-screenshot-frame img {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    margin-inline: auto;
   }
 
   .milestone-gallery.single-feature {
     max-width: 100%;
-    justify-items: stretch;
   }
 
   .hero-screenshot-frame {
