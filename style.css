@@ -1295,6 +1295,7 @@ h3 {
 
 .vexis-screenshot-frame {
   position: relative;
+  align-self: start;
   margin: 0;
   padding: clamp(12px, 1.8vw, 18px);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -1320,8 +1321,8 @@ h3 {
 .vexis-screenshot-frame img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
-  aspect-ratio: 1242 / 2688;
   object-fit: contain;
   border-radius: calc(var(--radius-lg) - 10px);
   background: #050607;
@@ -1368,6 +1369,7 @@ h3 {
 .milestone-gallery,
 .evolution-timeline {
   display: grid;
+  align-items: start;
   gap: clamp(18px, 3vw, 30px);
 }
 
@@ -1502,6 +1504,10 @@ body.lightbox-open {
 }
 
 @media (max-width: 920px) {
+  .vexis-case-study .case-section {
+    margin-top: clamp(52px, 8vw, 64px);
+  }
+
   .started-gallery,
   .evolution-card,
   .milestone-gallery.two-up,
@@ -1510,12 +1516,38 @@ body.lightbox-open {
     grid-template-columns: 1fr;
   }
 
+  .started-gallery,
+  .milestone-gallery,
+  .signai-gallery {
+    justify-items: center;
+  }
+
+  .started-gallery,
+  .evolution-timeline {
+    margin-top: 24px;
+  }
+
+  .evolution-timeline {
+    gap: 24px;
+  }
+
+  .evolution-card {
+    gap: 22px;
+    align-items: start;
+  }
+
   .evolution-copy {
     position: static;
   }
 
+  .vexis-gallery .vexis-screenshot-frame,
+  .milestone-gallery .vexis-screenshot-frame {
+    width: min(100%, 340px);
+  }
+
   .milestone-gallery.single-feature {
     max-width: none;
+    justify-items: center;
   }
 
   .hero-screenshot-frame {
@@ -1524,6 +1556,15 @@ body.lightbox-open {
 }
 
 @media (max-width: 560px) {
+  .vexis-case-study .case-section {
+    margin-top: 52px;
+  }
+
+  .vexis-gallery .vexis-screenshot-frame,
+  .milestone-gallery .vexis-screenshot-frame {
+    width: min(100%, 310px);
+  }
+
   .vexis-screenshot-frame,
   .hero-screenshot-frame,
   .compact-phone {
