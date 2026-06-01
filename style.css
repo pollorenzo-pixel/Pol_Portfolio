@@ -302,7 +302,8 @@ h3 {
 .hero-card,
 .snapshot-card,
 .project-card,
-.journey-card,
+.timeline-panel,
+.lessons-card,
 .contact-card {
   border: 1px solid var(--line);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.045));
@@ -421,16 +422,227 @@ h3 {
   padding: 13px 16px;
 }
 
-.journey-card {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 46px;
-  padding: clamp(28px, 5vw, 58px);
-  border-radius: var(--radius-lg);
+.journey-section {
+  overflow: hidden;
 }
 
-.journey-copy .button {
+.journey-heading {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.85fr) minmax(0, 1.15fr);
+  gap: 46px;
+  align-items: start;
+}
+
+.journey-intro {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+}
+
+.journey-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.journey-timeline {
+  position: relative;
+  margin-top: 34px;
+}
+
+.journey-timeline::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: calc(50% - 1px);
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(217, 168, 95, 0.5), rgba(123, 199, 196, 0.34), transparent);
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 92px minmax(0, 1fr);
+  gap: 0;
+  align-items: start;
+}
+
+.timeline-item + .timeline-item {
+  margin-top: 30px;
+}
+
+.timeline-item:nth-child(odd) .timeline-panel {
+  grid-column: 1;
+}
+
+.timeline-item:nth-child(even) .timeline-panel {
+  grid-column: 3;
+}
+
+.timeline-marker {
+  position: sticky;
+  top: 110px;
+  z-index: 1;
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.timeline-dot {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(217, 168, 95, 0.52);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 25%, rgba(255, 226, 170, 0.22), rgba(9, 11, 16, 0.92) 68%);
+  color: #ffe2aa;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.34), 0 0 0 8px rgba(9, 11, 16, 0.72);
+}
+
+.timeline-panel {
+  padding: clamp(24px, 4vw, 34px);
+  border-radius: var(--radius-md);
+}
+
+.timeline-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--accent-2);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.timeline-icon {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(123, 199, 196, 0.3);
+  border-radius: 12px;
+  background: rgba(123, 199, 196, 0.08);
+  color: var(--muted-strong);
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.timeline-panel h3 {
+  margin-bottom: 16px;
+}
+
+.timeline-panel p,
+.timeline-panel li {
+  color: var(--muted);
+}
+
+.timeline-panel p:last-child,
+.timeline-list:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 0;
+  margin: 18px 0 22px;
+  list-style: none;
+}
+
+.timeline-list li {
+  position: relative;
+  padding: 10px 12px 10px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.timeline-list li::before {
+  content: "";
+  position: absolute;
+  top: 1.05em;
+  left: 13px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.timeline-panel blockquote {
+  margin: 20px 0;
+  padding: 18px 20px;
+  border-left: 2px solid rgba(217, 168, 95, 0.68);
+  border-radius: 0 18px 18px 0;
+  background: rgba(217, 168, 95, 0.07);
+}
+
+.timeline-panel blockquote p {
+  margin: 0;
+  color: var(--muted-strong);
+  font-weight: 700;
+}
+
+.timeline-panel blockquote p + p {
   margin-top: 8px;
+}
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 22px;
+}
+
+.challenge-grid span {
+  padding: 11px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--muted-strong);
+  font-weight: 700;
+}
+
+.lessons-card {
+  position: relative;
+  overflow: hidden;
+  max-width: 860px;
+  margin-top: 40px;
+  padding: clamp(26px, 4vw, 40px);
+  border-color: rgba(217, 168, 95, 0.36);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, rgba(217, 168, 95, 0.16), rgba(255, 255, 255, 0.055));
+}
+
+.lessons-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -80px -120px auto;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217, 168, 95, 0.18), transparent 68%);
+}
+
+.lessons-card h3 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.lessons-card p {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  color: var(--muted-strong);
+}
+
+.lessons-card p:last-child {
+  margin-bottom: 0;
 }
 
 .card-button {
@@ -598,8 +810,36 @@ h3 {
   }
 
   .hero-grid,
-  .journey-card {
+  .journey-heading {
     grid-template-columns: 1fr;
+  }
+
+  .journey-timeline::before {
+    left: 29px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-panel,
+  .timeline-item:nth-child(even) .timeline-panel {
+    grid-column: 2;
+  }
+
+  .timeline-marker {
+    position: relative;
+    top: 0;
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 0;
+  }
+
+  .timeline-dot {
+    width: 52px;
+    height: 52px;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.3), 0 0 0 6px rgba(9, 11, 16, 0.78);
   }
 
   .projects-grid,
@@ -635,9 +875,29 @@ h3 {
   .hero-card,
   .snapshot-card,
   .project-card,
-  .journey-card,
+  .timeline-panel,
+  .lessons-card,
   .contact-card {
     padding: 22px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-timeline::before,
+  .timeline-marker {
+    display: none;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-panel,
+  .timeline-item:nth-child(even) .timeline-panel {
+    grid-column: 1;
+  }
+
+  .timeline-list,
+  .challenge-grid {
+    grid-template-columns: 1fr;
   }
 
   .button {
