@@ -42,3 +42,48 @@ if ('IntersectionObserver' in window) {
 } else {
   revealItems.forEach((item) => item.classList.add('is-visible'));
 }
+
+const lightbox = document.querySelector('[data-lightbox]');
+const lightboxImage = document.querySelector('[data-lightbox-image]');
+const lightboxClose = document.querySelector('[data-lightbox-close]');
+const screenshotTriggers = document.querySelectorAll('[data-lightbox-src]');
+let lastFocusedTrigger = null;
+
+const closeLightbox = () => {
+  if (!lightbox || !lightboxImage) return;
+
+  lightbox.classList.remove('is-open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('lightbox-open');
+  lightboxImage.removeAttribute('src');
+  lightboxImage.alt = '';
+  lastFocusedTrigger?.focus();
+};
+
+screenshotTriggers.forEach((trigger) => {
+  trigger.addEventListener('click', () => {
+    if (!lightbox || !lightboxImage) return;
+
+    lastFocusedTrigger = trigger;
+    lightboxImage.src = trigger.dataset.lightboxSrc;
+    lightboxImage.alt = trigger.dataset.lightboxAlt || '';
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lightbox-open');
+    lightboxClose?.focus();
+  });
+});
+
+lightboxClose?.addEventListener('click', closeLightbox);
+
+lightbox?.addEventListener('click', (event) => {
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+});
+
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && lightbox?.classList.contains('is-open')) {
+    closeLightbox();
+  }
+});
