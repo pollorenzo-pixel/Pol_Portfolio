@@ -456,6 +456,18 @@ h3 {
   margin-bottom: 34px;
 }
 
+.case-studies-intro {
+  padding-bottom: 34px;
+}
+
+.case-studies-intro + .vexis-case-study {
+  padding-top: 42px;
+}
+
+.section-lede {
+  margin-bottom: 0;
+}
+
 .hero-subheadline {
   margin-bottom: 18px;
   color: var(--text);
