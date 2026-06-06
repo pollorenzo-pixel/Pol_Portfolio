@@ -264,12 +264,20 @@ h3 {
   border-radius: 999px;
   border: 1px solid var(--line);
   font-weight: 750;
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease;
 }
 
 .button:hover,
 .button:focus-visible {
+  border-color: rgba(217, 168, 95, 0.5);
   transform: translateY(-2px);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.16);
+}
+
+.button:focus-visible {
+  outline: 3px solid rgba(217, 168, 95, 0.32);
+  outline-offset: 4px;
 }
 
 .button.primary {
@@ -373,6 +381,23 @@ h3 {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.045));
   box-shadow: var(--shadow);
   backdrop-filter: blur(16px);
+}
+
+.snapshot-card,
+.project-card,
+.contact-card {
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.snapshot-card:hover,
+.snapshot-card:focus-within,
+.project-card:hover,
+.project-card:focus-within,
+.contact-card:hover,
+.contact-card:focus-within {
+  border-color: rgba(217, 168, 95, 0.28);
+  transform: translateY(-3px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.26);
 }
 
 .hero-card {
@@ -1442,6 +1467,7 @@ h3 {
 
   .button {
     width: 100%;
+    min-height: 52px;
   }
 
   .hero-links,
